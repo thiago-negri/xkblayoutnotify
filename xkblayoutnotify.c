@@ -53,12 +53,14 @@ main(int argc, char *argv[])
 	if (!XkbSelectEvents(display, XkbUseCoreKbd, XkbStateNotifyMask, XkbStateNotifyMask))
 	{
 		fprintf(stderr, "!XkbSelectEvents(...)\n");
+		XCloseDisplay(display);
 		return -2;
 	}
 
 	if (XkbGetState(display, XkbUseCoreKbd, &state) != 0)
 	{
 		fprintf(stderr, "XkbGetState(...) != 0\n");
+		XCloseDisplay(display);
 		return -3;
 	}
 	xkb_group = state.group;
