@@ -1,8 +1,5 @@
 #include <X11/XKBlib.h>
-#include <X11/Xlib.h>
-#include <X11/extensions/XKB.h>
 #include <stdio.h>
-#include <stdlib.h>
 
 #define XKB_ANY_EVENT 85
 
@@ -50,19 +47,19 @@ main(int argc, char *argv[])
 	if (display == NULL)
 	{
 		fprintf(stderr, "XOpenDisplay(NULL) = NULL\n");
-		return EXIT_FAILURE;
+		return -1;
 	}
 
 	if (!XkbSelectEvents(display, XkbUseCoreKbd, XkbStateNotifyMask, XkbStateNotifyMask))
 	{
 		fprintf(stderr, "!XkbSelectEvents(...)\n");
-		return EXIT_FAILURE;
+		return -2;
 	}
 
 	if (XkbGetState(display, XkbUseCoreKbd, &state) != 0)
 	{
 		fprintf(stderr, "XkbGetState(...) != 0\n");
-		return EXIT_FAILURE;
+		return -3;
 	}
 	xkb_group = state.group;
 	emit_event();
@@ -74,5 +71,5 @@ main(int argc, char *argv[])
 	}
 
 	XCloseDisplay(display);
-	return EXIT_SUCCESS;
+	return 0;
 }
