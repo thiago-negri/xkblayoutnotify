@@ -16,6 +16,6 @@ xkblayoutnotify | \
   dzen2
 ```
 
-My complete configuration is in [herbstluftwm-config/panel.sh](https://github.com/thiago-negri/herbstluftwm-config/blob/main/panel.sh)
+My complete configuration is in [herbstluftwm/panel.sh](https://github.com/thiago-negri/dotfiles/blob/master/.config/herbstluftwm/panel.sh)
 
 To build, run `make`, you need X11 development libraries.
